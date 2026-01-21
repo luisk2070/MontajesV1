@@ -52,6 +52,7 @@ npm run dev
    - `DATABASE_URL` = (Internal Database URL)
    - `PORT` = `10000`
    - `NODE_ENV` = `production`
+   - `FRONTEND_URL` = URL del Static Site (para CORS)
 
 ### 4. Crear Static Site (Frontend)
 1. Dashboard → **New** → **Static Site**.
@@ -73,4 +74,3 @@ npm run dev
 
 ## Exportación JSON para Calendar
 Puedes usar los datos guardados en `/api/events` para generar un JSON compatible con Google Calendar.
-

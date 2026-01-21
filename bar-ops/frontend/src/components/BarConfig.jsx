@@ -71,6 +71,7 @@ const BarConfig = ({ onCalculated }) => {
       <input
         type="number"
         min="1"
+        max="20"
         value={moduleCount}
         onChange={(event) => setModuleCount(event.target.value)}
       />
@@ -87,7 +88,7 @@ const BarConfig = ({ onCalculated }) => {
         </label>
       ))}
 
-      <button type="button" onClick={handleCalculate}>CALCULAR</button>
+      <button type="button" onClick={handleCalculate}>CALCULAR TIEMPO</button>
 
       {error && <div className="alert">{error}</div>}
 

@@ -6,11 +6,12 @@ dotenv.config();
 const { Pool } = pg;
 
 // Pool de conexión preparado para Render (requiere SSL en producción)
+const isRender = process.env.DATABASE_URL?.includes('render.com');
+const requiresSsl = process.env.NODE_ENV === 'production' || isRender || process.env.PGSSLMODE === 'require';
+
 const pool = new Pool({
   connectionString: process.env.DATABASE_URL,
-  ssl: process.env.NODE_ENV === 'production'
-    ? { rejectUnauthorized: false }
-    : false
+  ssl: requiresSsl ? { rejectUnauthorized: false } : false
 });
 
 pool.on('connect', () => {
