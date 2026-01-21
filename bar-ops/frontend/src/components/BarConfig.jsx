@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react';
 import { api } from '../api.js';
+import StaffOptimizer from './StaffOptimizer.jsx';
 
 // Configurador dinámico de barras (El Lego)
 const BarConfig = ({ onCalculated }) => {
@@ -216,6 +217,14 @@ const BarConfig = ({ onCalculated }) => {
           </div>
         </div>
       )}
+
+      {/* Optimizador de Staff */}
+      <StaffOptimizer
+        calculatedData={result}
+        moduleCount={moduleCount}
+        selectedAccs={selectedAccs}
+        selectedZone={selectedZone}
+      />
     </div>
   );
 };
