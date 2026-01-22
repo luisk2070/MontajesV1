@@ -34,12 +34,29 @@ const CONFIG = {
 // CORS seguro para producción y flexible en local
 const allowedOrigins = [
   process.env.FRONTEND_URL,
-  'http://localhost:5173'
+  'http://localhost:5173',
+  'http://localhost:4173'
 ].filter(Boolean);
 
 app.use(cors({
   origin: (origin, callback) => {
-    if (!origin || allowedOrigins.includes(origin)) {
+    // Permitir requests sin origin (ej: curl, Postman)
+    if (!origin) {
+      callback(null, true);
+      return;
+    }
+    // Permitir orígenes en la lista
+    if (allowedOrigins.includes(origin)) {
+      callback(null, true);
+      return;
+    }
+    // Permitir cualquier subdominio de onrender.com (para Render deployments)
+    if (origin.endsWith('.onrender.com')) {
+      callback(null, true);
+      return;
+    }
+    // Permitir localhost en cualquier puerto (desarrollo)
+    if (origin.startsWith('http://localhost:')) {
       callback(null, true);
       return;
     }
