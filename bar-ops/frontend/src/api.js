@@ -6,7 +6,7 @@ import axios from 'axios';
 
 // Detecta entorno de producción en Render usando la URL
 const API_URL = import.meta.env.PROD
-  ? 'https://TU-BACKEND.onrender.com'
+  ? 'https://bar-ops-backend.onrender.com'
   : '';
 
 // Configuración de reintentos
